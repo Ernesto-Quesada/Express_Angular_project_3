@@ -19,8 +19,8 @@ export class SignupComponent implements OnInit {
   constructor(private mySessionService: SenderService) { }
 
   ngOnInit() {
-    this.mySessionService.isLoggedIn()
-      .then(userInfo => this.user = userInfo);
+    // this.mySessionService.isLoggedIn()
+    //   .then(userInfo => this.user = userInfo);
   }
 
   signup() {

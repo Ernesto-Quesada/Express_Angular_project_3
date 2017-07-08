@@ -13,11 +13,20 @@
           <fieldset>
             <div class="form-group">
               <label for="emailInput"> Account EMAIL </label>
-              <input  type='text' name="loginEmailInput" [(ngModel)]="loginInfo.loginEmailInput"  id="emailInput" class="form-control" placeholder="email"autofocus>
+              <input  type='text' name= 'loginEmailInput' [(ngModel)]= 'loginInfo.loginEmailInput'  id="emailInput" class="form-control" placeholder="email" autofocus>
              </div>
              <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" name="password" [(ngModel)]= "logininfo.password" id="password" class="form-control" placeholder="password">
+
+              <!--CRAZY BEHAVIOUR-->
+          <input type='password' name= 'loginPassword' [(ngModel)]= 'loginInfo.loginPassword'  id="password" class="form-control" placeholder="password">
+          <!--<input type='password' name= 'loginPassword' [(ngModel)]= 'loginInfo.loginPassword'  id="password" class="form-control" placeholder="password">-->
+
+
+
+
+
+
               </div>
                                 
                <!-- Change this to a button or input when using this as a form -->

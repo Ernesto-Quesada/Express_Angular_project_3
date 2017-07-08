@@ -20,18 +20,20 @@ export class LoginComponent implements OnInit {
   user: any;
   error: any;
   constructor(private mySessionService: SenderService) { }
-
   ngOnInit() {
    this.mySessionService.isLoggedIn()
       .then(userInfo => this.user = userInfo);
   }
   login() {
     const thePromise = this.mySessionService.login(this.loginInfo);
-
     thePromise.then((userInfo) => {
       this.user = userInfo;
       this.error = null;
+    console.log('USER INFO', userInfo);
+    console.log('USER', this.user);
     });
+    console.log('LOGIN INFO FROM THE HTML FORM',this.loginInfo);
+    console.log(thePromise);
 
     thePromise.catch((err) => {
       this.user = null;
@@ -39,47 +41,6 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // login() {
-  //   this.session.login(this.formInfo)
-  //     .subscribe(
-  //       (user) => this.successCb(user),
-  //       (err) => this.errorCb(err)
-  //     );
-  // }
-
-  // signup() {
-  //   this.session.signup(this.formInfo)
-  //     .subscribe(
-  //       (user) => this.successCb(user),
-  //       (err) => this.errorCb(err)
-  //     );
-  // }
-
-  // logout() {
-  //   this.session.logout()
-  //     .subscribe(
-  //       () => this.successCb(null),
-  //       (err) => this.errorCb(err)
-  //     );
-  // }
-
-  // getPrivateData() {
-  //   this.session.getPrivateData()
-  //     .subscribe(
-  //       (data) => this.privateData = data,
-  //       (err) => this.error = err
-  //     );
-  // }
-
-  // errorCb(err) {
-  //   this.error = err;
-  //   this.user = null;
-  // }
-
-  // successCb(user) {
-  //   this.user = user;
-  //   this.error = null;
-  // }
 
 }
 
