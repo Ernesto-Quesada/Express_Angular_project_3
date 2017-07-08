@@ -16,6 +16,7 @@ import { SignupComponent } from './signup/signup.component'
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'login',  component: LoginComponent },
+  { path: 'signup',  component: SignupComponent },
   // { path: 'about', component: MyAboutComponent }
 ];
 
@@ -23,7 +24,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     UserprofileComponent,
-    SignupComponent
+    SignupComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -1,13 +1,55 @@
-<h1> Authentication Sample </h1>
-<form>
-  <h2> Login or Signup </h2>
-  <label> Username </label>
-  <input type="text" [(ngModel)]="formInfo.username" name="username"/>
   <br>
-  <label> Password </label>
-  <input type="password" [(ngModel)]="formInfo.password" name="password"/>
+<div class="container">
+ <div class="row">
+  <div class="col-md-4 col-md-offset-4">
+   <div class="login-panel panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Please Sign Up</h3>
+    </div>
+    <div class="panel-body">
+      <form class="signup" >
+       <fieldset>
 
-  <button (click)="login()"> login </button>
-  <button (click)="signup()"> signup </button>
-</form>
-<p class="error"> {{ error }} </p>
+       <div class="form-group">
+          <label for="firstNameInput"> first name </label>
+          <input type="text" name="firstNameInput" [(ngModel)]="signupInfo.firstNameInput" id="firstNameInput" class="form-control" placeholder="first name" autofocus>
+        </div>
+
+        <div class="form-group">
+          <label for="lastNameInput"> last name </label>
+          <input type="text" name="lastNameInput" [(ngModel)]="signupInfo.lastNameInput" id="lastNameInput" class="form-control" placeholder="last name">
+        </div>
+
+        <div class="form-group">
+          <label for="emailInput"> Your email </label>
+          <input type="text" name="emailInput" [(ngModel)]="signupInfo.emailInput" id="emailInput" class="form-control" placeholder="email">
+        </div>
+
+        <div class="form-group">
+          <label for="phoneInput"> Your phone </label>
+          <input type="text" name="phoneInput" [(ngModel)]="signupInfo.phoneInput" id="phoneInput" class="form-control" placeholder="phones">
+        </div>
+        <div class="form-group">
+          <label for="signupPassword">Password</label>
+          <input type="text" name="signupPassword " [(ngModel)]="signup.signupPassword" class="form-control" placeholder="password">
+        </div>
+        <div class="form-group">
+          <label for="countryInput"> Country </label>
+          <input type="text" name="countryInput" [(ngModel)]="signupInfo.countryInput" id="countryInput" class="form-control" placeholder="country">
+        </div>
+                                
+<!-- Change this to a button or input when using this as a form -->
+       <button (click)="signup()" class="btn btn-lg btn-primary btn-block">Sign Up</button>
+       </fieldset>
+      </form>
+      <h4>  Do you already have an account?<a href="/login" class="btn btn-lg btn-success btn-block"> Log In </a></h4>
+     </div>
+  </div>
+  </div>
+ </div>
+</div>
+
+
+
+
+

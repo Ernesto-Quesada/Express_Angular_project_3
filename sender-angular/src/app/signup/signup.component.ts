@@ -1,68 +1,40 @@
 import { Component, OnInit } from '@angular/core';
+// importing the service that will call the Express API
 import { SenderService } from '../sender.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  user: any;
-  formInfo = {
-    username: '',
-    password: ''
-  };
-  error: string;
-  privateData: any = '';
 
-  constructor(private session: SenderService) { }
+  // loginInfo = {};
+  signupInfo = {};
+
+  user: any;
+  error: string;
+
+
+  constructor(private mySessionService: SenderService) { }
 
   ngOnInit() {
-    this.session.isLoggedIn()
-      .subscribe(
-        (user) => this.successCb(user)
-      );
-  }
-
-  login() {
-    this.session.login(this.formInfo)
-      .subscribe(
-        (user) => this.successCb(user),
-        (err) => this.errorCb(err)
-      );
+    this.mySessionService.isLoggedIn()
+      .then(userInfo => this.user = userInfo);
   }
 
   signup() {
-    this.session.signup(this.formInfo)
-      .subscribe(
-        (user) => this.successCb(user),
-        (err) => this.errorCb(err)
-      );
+    const thePromise = this.mySessionService.signup(this.signupInfo);
+
+    thePromise.then((userInfo) => {
+      this.user = userInfo;
+      this.error = null;
+    });
+
+    thePromise.catch((err) => {
+      this.user = null;
+      this.error = err;
+    });
   }
 
-  // logout() {
-  //   this.session.logout()
-  //     .subscribe(
-  //       () => this.successCb(null),
-  //       (err) => this.errorCb(err)
-  //     );
-  // }
-
-  // getPrivateData() {
-  //   this.session.getPrivateData()
-  //     .subscribe(
-  //       (data) => this.privateData = data,
-  //       (err) => this.error = err
-  //     );
-  // }
-
-  errorCb(err) {
-    this.error = err;
-    this.user = null;
-  }
-
-  successCb(user) {
-    this.user = user;
-    this.error = null;
-  }
 }

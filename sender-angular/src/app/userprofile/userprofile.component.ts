@@ -14,12 +14,12 @@ profile: Array<Object> = [];
   constructor(private myAppService: SenderService) { }
 
   ngOnInit() {
-    this.myAppService.getProfile()
-      .then((profile) => {
-        this.profile = profile;
-      })
-      .catch((err) => {
-        this.errorMessage = 'There was an error. Try again later.';
-      });
+    // this.myAppService.getProfile()
+    //   .then((profile) => {
+    //     this.profile = profile;
+    //   })
+    //   .catch((err) => {
+    //     this.errorMessage = 'There was an error. Try again later.';
+    //   });
   }
 }
