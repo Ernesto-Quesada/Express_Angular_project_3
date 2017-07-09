@@ -8,18 +8,13 @@ import { SenderService } from '../sender.service';
   styleUrls: ['./userprofile.component.css']
 })
 export class UserprofileComponent implements OnInit {
-profile: Array<Object> = [];
+user: Object= {};
   errorMessage: string = '';
 
-  constructor(private myAppService: SenderService) { }
+  constructor(private myProfileService: SenderService) { }
 
   ngOnInit() {
-    // this.myAppService.getProfile()
-    //   .then((profile) => {
-    //     this.profile = profile;
-    //   })
-    //   .catch((err) => {
-    //     this.errorMessage = 'There was an error. Try again later.';
-    //   });
+   this.myProfileService.isLoggedIn()
+      .then(userInfo => this.user = userInfo);
   }
 }

@@ -1,5 +1,11 @@
 
 <br>
+
+HERE'S THE USER
+<div *ngIf="user">
+{{user}}
+  </div>
+
 <div *ngIf="!user" class="container">
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
@@ -18,22 +24,38 @@
              <div class="form-group">
               <label for="password">Password</label>
 
-              <!--CRAZY BEHAVIOUR-->
           <input type='password' name= 'loginPassword' [(ngModel)]= 'loginInfo.loginPassword'  id="password" class="form-control" placeholder="password">
-          <!--<input type='password' name= 'loginPassword' [(ngModel)]= 'loginInfo.loginPassword'  id="password" class="form-control" placeholder="password">-->
-
-
-
-
-
-
-              </div>
+  </div>
                                 
                <!-- Change this to a button or input when using this as a form -->
-              <button (click)="login()" class="btn btn-lg btn-success btn-block">Login</button>
+              <button (click)="login(); logMe()" class="btn btn-lg btn-success btn-block">Login</button>
                             </fieldset>
           </form>
             <h4>  Don't have an account?<a href="/signup" class="btn btn-lg btn-primary btn-block">Sign Up </a></h4>
+
+        </div>
+    </div>
+   </div>
+  </div>
+</div>
+
+<div *ngIf="user" class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="login-panel panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">You are already Logged In</h3>
+        </div>
+                    
+        <div class="panel-body">
+          
+          <fieldset>
+            <div class="panel-heading">
+              <h3 class="panel-title">{{user.firstName}}</h3>
+            </div>
+          </fieldset>
+         
+            
 
         </div>
     </div>

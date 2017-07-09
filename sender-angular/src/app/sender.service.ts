@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 
+
 @Injectable()
 export class SenderService {
   // tslint:disable-next-line:no-inferrable-types
@@ -14,12 +15,6 @@ export class SenderService {
   handleError(e) {
     return Observable.throw(e.json().message);
   }
-
-  // signup(user) {
-  //   return this.http.post(`${this.BASE_URL}/signup`, user)
-  //     .map(res => res.json())
-  //     .catch(this.handleError);
-  // }
 
   signup (user) {
     const theOriginalPromise = this.http.post('http://localhost:3000/signup', user).toPromise();
@@ -38,21 +33,14 @@ login (credentials) {
     });
     return theParsedPromise;
   }
-  // login(user) {
-  //   return this.http.post(`/login`, user)
-  //     .map(res => res.json())
-  //     .catch(this.handleError);
-  // }
+
+
   isLoggedIn () {
-    return this.http.get('http://localhost:3000/loggedin')
+  return this.http.get('http://localhost:3000/loggedin', {withCredentials: true})
       .toPromise()
       .then(result => result.json());
   }
-  // isLoggedIn() {
-  //   return this.http.get(`/loggedin`)
-  //     .map(res => res.json())
-  //     .catch(this.handleError);
-  // }
+
 
   // logout() {
   //   return this.http.post(`/logout`, {})
@@ -61,11 +49,11 @@ login (credentials) {
   // }
 
 
-  // getPrivateData() {
-  //   return this.http.get(`/private`)
-  //     .map(res => res.json())
-  //     .catch(this.handleError);
-  // }
+  getProfile() {
+    return this.http.get('http://localhost:3000/loggedin')
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
 
 
 }
